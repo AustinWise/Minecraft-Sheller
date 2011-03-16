@@ -137,6 +137,10 @@ sync_offline() {
 if [[ $# -gt 0 ]]; then
 	case "$1" in
 		#################################################################
+		"pid")
+			echo $MC_PID
+			;;
+		#################################################################
 		"status")
 			if [[ 1 -eq $ONLINE ]]; then
 				echo "Minecraft server seems ONLINE."
