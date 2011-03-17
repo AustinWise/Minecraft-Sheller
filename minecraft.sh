@@ -10,7 +10,7 @@
 # Main
 WORLD_NAME="world"
 OFFLINE_NAME=$WORLD_NAME-offline
-MC_PATH=/home/minecraft/mc
+MC_PATH=$HOME/mc
 SCREEN_NAME="minecraft"
 MEMMAX=512
 MEMALOC=512
@@ -23,14 +23,14 @@ MODJAR="craftbukkit.jar"
 RUNECRAFT=0
 
 # Backups
-BKUP_PATH=/home/minecraft/Dropbox/MinecraftBackup
+BKUP_PATH=$HOME/Dropbox/MinecraftBackup
 BKUP_DAYS_INCR=2
 BKUP_DAYS_FULL=5
 BACKUP_FULL_LINK=${BKUP_PATH}/${WORLD_NAME}_full.tgz
 BACKUP_INCR_LINK=${BKUP_PATH}/${WORLD_NAME}_incr.tgz
 
 # Logs
-LOG_TDIR=/var/www/minecraft/logs
+LOG_TDIR=$HOME/logs
 LOGS_DAYS=14
 
 # Mapping
@@ -39,9 +39,9 @@ MAPS_PATH=/var/www/minecraft/maps
 CARTO_OPTIONS="-q -s -m 4"
 BIOME_PATH=/home/minecraft/BiomeExtractor
 
-MCOVERVIEWER_PATH=$MC_PATH/Overviewer/
-MCOVERVIEWER_MAPS_PATH=/var/www/minecraft/maps/Overview/
-MCOVERVIEWER_CACHE_PATH=/var/www/minecraft/maps/Overview/cache/
+MCOVERVIEWER_PATH=$HOME/Minecraft-Overviewer
+MCOVERVIEWER_MAPS_PATH=$HOME/deployment/mongrel2/static/overview/
+MCOVERVIEWER_CACHE_PATH=$HOME//deployment/mongrel2/static/overview/cache/
 MCOVERVIEWER_OPTIONS="--lighting"
 
 # 	End of configuration
