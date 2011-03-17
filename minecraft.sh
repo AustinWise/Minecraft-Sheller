@@ -10,7 +10,7 @@
 # Main
 WORLD_NAME="world"
 OFFLINE_NAME=$WORLD_NAME-offline
-MC_PATH=/home/austin/mc
+MC_PATH=/home/minecraft/mc
 SCREEN_NAME="minecraft"
 MEMMAX=512
 MEMALOC=512
@@ -23,7 +23,7 @@ MODJAR="craftbukkit.jar"
 RUNECRAFT=0
 
 # Backups
-BKUP_PATH=/home/austin/Dropbox/MinecraftBackup
+BKUP_PATH=/home/minecraft/Dropbox/MinecraftBackup
 BKUP_DAYS_INCR=2
 BKUP_DAYS_FULL=5
 BACKUP_FULL_LINK=${BKUP_PATH}/${WORLD_NAME}_full.tgz
