@@ -10,10 +10,10 @@
 # Main
 WORLD_NAME="world"
 OFFLINE_NAME=$WORLD_NAME-offline
-MC_PATH=$HOME/mc
+MC_PATH=/home/minecraft/mc
 SCREEN_NAME="minecraft"
-MEMMAX=512
-MEMALOC=512
+MEMMAX=1024
+MEMALOC=1024
 DISPLAY_ON_LAUNCH=0
 SERVER_OPTIONS=""
 
@@ -23,14 +23,14 @@ MODJAR="craftbukkit.jar"
 RUNECRAFT=0
 
 # Backups
-BKUP_PATH=$HOME/Dropbox/MinecraftBackup
+BKUP_PATH=/home/minecraft/Dropbox/MinecraftBackup
 BKUP_DAYS_INCR=2
 BKUP_DAYS_FULL=5
 BACKUP_FULL_LINK=${BKUP_PATH}/${WORLD_NAME}_full.tgz
 BACKUP_INCR_LINK=${BKUP_PATH}/${WORLD_NAME}_incr.tgz
 
 # Logs
-LOG_TDIR=$HOME/logs
+LOG_TDIR=/home/minecraft/logs
 LOGS_DAYS=14
 
 # Mapping
@@ -39,19 +39,19 @@ MAPS_PATH=/var/www/minecraft/maps
 CARTO_OPTIONS="-q -s -m 4"
 BIOME_PATH=/home/minecraft/BiomeExtractor
 
-MCOVERVIEWER_PATH=$HOME/Minecraft-Overviewer
-MCOVERVIEWER_MAPS_PATH=$HOME/deployment/mongrel2/static/overview/
-MCOVERVIEWER_CACHE_PATH=$HOME//deployment/mongrel2/static/overview/cache/
+MCOVERVIEWER_PATH=/home/minecraft/Minecraft-Overviewer
+MCOVERVIEWER_MAPS_PATH=/home/minecraft/deployment/mongrel2/static/overview/
+MCOVERVIEWER_CACHE_PATH=/home/minecraft/.overview_cache/
 MCOVERVIEWER_OPTIONS="--lighting"
 
 # 	End of configuration
 
-	if [[ -e $MC_PATH/server.log.lck ]]; then
-		#       ps -e | grep java | wc -l
-		ONLINE=1
-	else
-		ONLINE=0
-	fi
+#	if [[ -e $MC_PATH/server.log.lck ]]; then
+#		#       ps -e | grep java | wc -l
+#		ONLINE=1
+#	else
+#		ONLINE=0
+#	fi
 
 #	Get the PID of our Java process for later use.  Better
 #	than just killing the lowest PID java process like the
@@ -65,13 +65,19 @@ MCOVERVIEWER_OPTIONS="--lighting"
 
 SCREEN_PID=$(screen -list | grep $SCREEN_NAME | grep -iv "No sockets found" | head -n1 | sed "s/^\s//;s/\.$SCREEN_NAME.*$//")
 
+ONLINE=0
 if [[ -z $SCREEN_PID ]]; then
 	#	Our server seems offline, because there's no screen running.
 	#	Set MC_PID to a null value.
 	MC_PID=''
 else
-	MC_PID=$(ps --ppid $SCREEN_PID -F -C java | tail -1 | awk '{print $2}')
+	MC_PID=$(ps --ppid $SCREEN_PID -F -C java 2>/dev/null | tail -1 | awk '{print $2; exit 3;}')
+	if [[ $? -eq 3 ]]; then
+		ONLINE=1
+	fi
 fi
+
+
 
 display() {
 	screen -x $SCREEN_NAME
