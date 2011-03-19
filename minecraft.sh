@@ -8,7 +8,9 @@
 #	Configuration
 
 # Main
+if [ -z $WORLD_NAME ]; then
 WORLD_NAME="world"
+fi
 OFFLINE_NAME=$WORLD_NAME-offline
 MC_PATH=/home/minecraft/mc
 SCREEN_NAME="minecraft"
@@ -18,7 +20,7 @@ DISPLAY_ON_LAUNCH=0
 SERVER_OPTIONS=""
 
 # Modifications
-SERVERMOD=0
+SERVERMOD=1
 MODJAR="craftbukkit.jar"
 RUNECRAFT=0
 
