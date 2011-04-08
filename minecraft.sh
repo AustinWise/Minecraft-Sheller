@@ -65,6 +65,7 @@ MCOVERVIEWER_OPTIONS="--lighting"
 #	Then, use PS to find children of that screen whose
 #	command is 'java'.
 
+screen -wipe 2>/dev/null >/dev/null
 SCREEN_PID=$(screen -list | grep $SCREEN_NAME | grep -iv "No sockets found" | head -n1 | sed "s/^\s//;s/\.$SCREEN_NAME.*$//")
 
 ONLINE=0
@@ -73,7 +74,8 @@ if [[ -z $SCREEN_PID ]]; then
 	#	Set MC_PID to a null value.
 	MC_PID=''
 else
-	MC_PID=$(ps --ppid $SCREEN_PID -F -C java 2>/dev/null | tail -1 | awk '{print $2; exit 3;}')
+	MC_PID=$(ps --ppid $SCREEN_PID -F -C java 2>/dev/null | grep java | tail -1 | awk '{print $2; exit 3;}')
+
 	if [[ $? -eq 3 ]]; then
 		ONLINE=1
 	fi
