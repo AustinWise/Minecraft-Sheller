@@ -42,8 +42,8 @@ CARTO_OPTIONS="-q -s -m 4"
 BIOME_PATH=/home/minecraft/BiomeExtractor
 
 MCOVERVIEWER_PATH=/home/minecraft/Minecraft-Overviewer
-MCOVERVIEWER_MAPS_PATH=/home/minecraft/deployment/mongrel2/static/overview/
-MCOVERVIEWER_CACHE_PATH=/home/minecraft/.overview_cache/
+MCOVERVIEWER_MAPS_PATH=/home/minecraft/deployment/mongrel2/static/overview/$WORLD_NAME/
+MCOVERVIEWER_CACHE_PATH=/home/minecraft/.overview_cache/$WORLD_NAME/
 MCOVERVIEWER_OPTIONS="--lighting"
 
 # 	End of configuration
