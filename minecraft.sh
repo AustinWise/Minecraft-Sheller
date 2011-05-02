@@ -454,6 +454,11 @@ if [[ $# -gt 0 ]]; then
 
 						echo "Minecraft-Overviewer in progress..."
 						python $MCOVERVIEWER_PATH/gmap.py $MCOVERVIEWER_OPTIONS --cachedir=$MCOVERVIEWER_CACHE_PATH $MC_PATH/$OFFLINE_NAME $MCOVERVIEWER_MAPS_PATH
+						
+						echo 's/<head>/<head><title>'$WORLD_NAME' - '`date`'<\/title>/' > $MCOVERVIEWER_CACHE_PATH/title.sed
+						sed -i -f $MCOVERVIEWER_CACHE_PATH/title.sed $MCOVERVIEWER_MAPS_PATH/index.html
+						rm $MCOVERVIEWER_CACHE_PATH/title.sed
+						
 						echo "Minecraft-Overviewer is done."
 
 					else
