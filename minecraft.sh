@@ -39,7 +39,7 @@ LOGS_DAYS=14
 CARTO_PATH=$MC_PATH/carto
 MAPS_PATH=/var/www/minecraft/maps
 CARTO_OPTIONS="-q -s -m 4"
-BIOME_PATH=/home/minecraft/BiomeExtractor
+BIOME_PATH=/home/minecraft/MinecraftBiomeExtractor
 
 MCOVERVIEWER_PATH=/home/minecraft/Minecraft-Overviewer
 MCOVERVIEWER_MAPS_PATH=/home/minecraft/deployment/mongrel2/static/overview/$WORLD_NAME/
