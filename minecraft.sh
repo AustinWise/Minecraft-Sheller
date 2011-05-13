@@ -454,9 +454,13 @@ if [[ $# -gt 0 ]]; then
 						echo "Minecraft-Overviewer in progress..."
 						python $MCOVERVIEWER_PATH/overviewer.py $MCOVERVIEWER_OPTIONS $MC_PATH/$OFFLINE_NAME $MCOVERVIEWER_MAPS_PATH
 						
+						#add title with world name and gen time
 						echo 's/<head>/<head><title>'$WORLD_NAME' - '`date`'<\/title>/' > $MCOVERVIEWER_MAPS_PATH/title.sed
 						sed -i -f $MCOVERVIEWER_MAPS_PATH/title.sed $MCOVERVIEWER_MAPS_PATH/index.html
 						rm $MCOVERVIEWER_MAPS_PATH/title.sed
+
+						#add name of world to config file
+						sed -i "s/var overviewerConfig = {/var overviewerConfig = {'world':\"$WORLD_NAME\",/" $MCOVERVIEWER_MAPS_PATH/overviewerConfig.js
 						
 						echo "Minecraft-Overviewer is done."
 
